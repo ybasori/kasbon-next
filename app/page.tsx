@@ -22,9 +22,9 @@ export default function Home() {
       <div className="bg-white p-6">
         <div className="p-4">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <Summary />
-            <Summary />
-            <Summary />
+            <Summary title="Subscribers" value={44333} />
+            <Summary title="Subscribers" value={44333} />
+            <Summary title="Subscribers" value={44333} />
           </div>
         </div>
         <div className="flex items-start justify-between mb-8">
