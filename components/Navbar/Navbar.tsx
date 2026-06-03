@@ -98,12 +98,20 @@ const Navbar = () => {
                   ) : null}
                 </div>
               ) : (
+                <>
                 <Link
                   href="/login"
                   className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"
                 >
                   Login
                 </Link>
+                <Link
+                  href="/register"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"
+                >
+                  Register
+                </Link>
+                </>
               )}
             </div>
           </div>

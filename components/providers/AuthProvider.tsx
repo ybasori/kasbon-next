@@ -7,9 +7,7 @@ import {
 } from "react";
 
 interface User {
-  id: string;
-  email: string;
-  role?: string;
+  access_token: string;
 }
 
 interface AuthContextType {
