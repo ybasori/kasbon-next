@@ -11,7 +11,8 @@ const Table: React.FC<{
       row?: { [name: string]: string | number | null | undefined },
     ) => React.ReactNode;
   }[];
-  data: { [name: string]: string }[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any[];
   onSort: (value: { by: string; order: "desc" | "asc" }[]) => void;
   sort: { by: string; order: "desc" | "asc" }[];
 }> = ({ columns, data, loading = false, onSort, sort=[] }) => {

@@ -24,12 +24,11 @@ const debtSchema = yup.object({
   type: yup
     .mixed<"owed_to_me" | "i_owe">()
     .oneOf(["owed_to_me", "i_owe"])
-    .required()
-    .label("Tipe"),
-  counterpart_name: yup.string().required().label("Nama Orang"),
-  amount: yup.number().positive().required().label("Jumlah"),
-  note: yup.string().nullable().optional().label("Catatan").max(200),
-  due_date: yup.date().nullable().optional().label("Tanggal"),
+    .required(),
+  counterpart_name: yup.string().required(),
+  amount: yup.number().positive().required(),
+  note: yup.string().nullable().default(""),
+  due_date: yup.date().nullable().default(null),
 });
 
 type DebtFormData = InferType<typeof debtSchema>;
@@ -45,16 +44,22 @@ const FormDebtAddEdit: React.FC<{
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    control
+    control,
   } = useForm<DebtFormData>({
     resolver: yupResolver(debtSchema),
-    defaultValues: !!initialValues
-      ? initialValues
+    defaultValues: initialValues
+      ? {
+          ...initialValues,
+          due_date: initialValues.due_date
+            ? new Date(initialValues.due_date)
+            : null,
+        }
       : {
           type: "i_owe",
           counterpart_name: "",
+          amount: 0,
           note: "",
-          due_date: new Date().toISOString(),
+          due_date: new Date(),
         },
   });
 

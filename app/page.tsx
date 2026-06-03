@@ -34,9 +34,9 @@ export default function Home() {
   const [openPaid, setOpenPaid] = useState<IData | null>(null);
   const [dataDebt, setDataDebt] = useState<IData[]>([]);
   const [filter, setFilter] = useState<{
-    status?: { label: string; value: string };
-    tipe?: { label: string; value: string };
-    name?: { label: string; value: string };
+    status?: { label: string; value?: string | null };
+    tipe?: { label: string; value?: string | null };
+    name?: { label: string; value?: string | null };
   } | null>(null);
   const [sort, setSort] = useState<{ by: string; order: "asc" | "desc" }[]>([]);
 

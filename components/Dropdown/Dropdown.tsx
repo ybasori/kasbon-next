@@ -2,9 +2,9 @@ import { useState } from "react";
 
 const Dropdown: React.FC<{
   label: string;
-  options: { label: string; value: string }[];
-  value?: { label: string; value: string };
-  onChange: (res: { label: string; value: string }) => void;
+  options: { label: string; value?: string | null }[];
+  value?: { label: string; value?: string | null };
+  onChange: (res: { label: string; value?: string | null }) => void;
 }> = ({ label, options, value, onChange }) => {
   const [open, setOpen] = useState(false);
   return (
