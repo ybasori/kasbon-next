@@ -28,3 +28,9 @@ jika ada satu hari lagi saya akan tambahkan grafik dan memperbaiki tampilan untu
   - @hookform/resolvers sebagai menyambung antara reac-hook-form dan yup
   - react-number-format untuk menjadikan input sebagai inputan currency
   - react-toastify untuk memunculkan pesan setiap kali ada response yang masuk setalah request API
+
+
+## Time spent
+  - jam 19.44 - jam 1.13 = 5 jam 29 menit
+  - jam 9.00 - jam 19.00 = 10 jam
+  - total time spent 15 jam 29 menit
