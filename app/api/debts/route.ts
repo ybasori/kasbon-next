@@ -2,6 +2,18 @@ import { createClient } from "@supabase/supabase-js";
 import * as yup from "yup";
 import qs from "qs";
 
+type Query = {
+  filter: {
+    name: string;
+    status: string;
+    tipe: string;
+  };
+  sort: {
+    order: "asc" | "desc";
+    by: string;
+  }[];
+};
+
 const createDebtSchema = yup.object({
   type: yup
     .mixed<"owed_to_me" | "i_owe">()
@@ -19,14 +31,7 @@ export async function GET(req: Request) {
 
     const url = new URL(req.url);
 
-    const query:{filter:{
-        name:string;
-        status:string;
-        tipe:string;
-    };sort:{
-        order:"asc"|"desc";
-        by:string
-    }[]} = qs.parse(url.search.slice(1));
+    const query = qs.parse(url.search.slice(1)) as Query;
 
 
     if (!token) {
