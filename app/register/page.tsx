@@ -18,7 +18,7 @@ const loginSchema = yup.object({
 
 type LoginFormData = InferType<typeof loginSchema>;
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const { setUser } = useAuth();
   const {
     register,
@@ -33,7 +33,7 @@ export default function LoginPage() {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    const response = await fetch("/api/auth/login", {
+    const response = await fetch("/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,9 +43,8 @@ export default function LoginPage() {
 
     const result = await response.json();
     if (response.status < 400) {
-      setUser(result.session);
-      toast.success("Welcome!");
-      redirect("/");
+      toast.success("Register success");
+      redirect("/login");
     } else {
       toast.error(result.message);
     }
@@ -60,7 +59,7 @@ export default function LoginPage() {
             className="mx-auto h-10 w-auto"
           />
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-            Sign in to your account
+            Register new account
           </h2>
         </div>
 
@@ -81,7 +80,7 @@ export default function LoginPage() {
               <div className="mt-2">
                 <input
                   id="email"
-                  type="text"
+                  type="email"
                   autoComplete="off"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   {...register("email")}
@@ -121,7 +120,7 @@ export default function LoginPage() {
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Loading..." : "Login"}
+                {isSubmitting ? "Loading..." : "Register"}
               </button>
             </div>
           </form>
